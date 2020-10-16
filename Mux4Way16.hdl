@@ -1,0 +1,435 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/01/Mux4Way16.hdl
+
+/**
+ * 4-way 16-bit multiplexor:
+ * out = a if sel == 00
+ *       b if sel == 01
+ *       c if sel == 10
+ *       d if sel == 11
+ */
+
+CHIP Mux4Way16 {
+    IN a[16], b[16], c[16], d[16], sel[2];
+    OUT out[16];
+
+    PARTS:
+    // First try
+
+    // // Put your code here:
+    // Not(in=sel[0], out=Ns1);
+    // Not(in=sel[1], out=Ns2);
+
+    // // bit 0
+    // And(a=a[0], b=Ns2, out=a0Ns2);
+    // And(a=b[0], b=sel[1], out=b0s2);
+    // Or(a=a0Ns2, b=b0s2, out=a0Ns2Ob0s2);
+    // And(a=Ns1, b=a0Ns2Ob0s2, out=left00);
+
+    // And(a=c[0], b=Ns2, out=c0Ns2);
+    // And(a=d[0], b=sel[1], out=d0s2);
+    // Or(a=c0Ns2, b=d0s2, out=c0Ns2Od0s2);
+    // And(a=sel[0], b=c0Ns2Od0s2, out=right00);
+
+    // Or(a=left00, b=right00, out=out[0]);
+
+    // // bit 1
+    // And(a=a[1], b=Ns2, out=a1Ns2);
+    // And(a=b[1], b=sel[1], out=b1s2);
+    // Or(a=a1Ns2, b=b1s2, out=a1Ns2Ob1s2);
+    // And(a=Ns1, b=a1Ns2Ob1s2, out=left01);
+
+    // And(a=c[1], b=Ns2, out=c1Ns2);
+    // And(a=d[1], b=sel[1], out=d1s2);
+    // Or(a=c1Ns2, b=d1s2, out=c1Ns2Od1s2);
+    // And(a=sel[0], b=c1Ns2Od1s2, out=right01);
+
+    // Or(a=left01, b=right01, out=out[1]);
+
+    // // bit 2
+    // And(a=a[2], b=Ns2, out=a2Ns2);
+    // And(a=b[2], b=sel[1], out=b2s2);
+    // Or(a=a2Ns2, b=b2s2, out=a2Ns2Ob2s2);
+    // And(a=Ns1, b=a2Ns2Ob2s2, out=left02);
+
+    // And(a=c[2], b=Ns2, out=c2Ns2);
+    // And(a=d[2], b=sel[1], out=d2s2);
+    // Or(a=c2Ns2, b=d2s2, out=c2Ns2Od2s2);
+    // And(a=sel[0], b=c2Ns2Od2s2, out=right02);
+
+    // Or(a=left02, b=right02, out=out[2]);
+
+    // // bit 3
+    // And(a=a[3], b=Ns2, out=a3Ns2);
+    // And(a=b[3], b=sel[1], out=b3s2);
+    // Or(a=a0Ns2, b=b0s2, out=a3Ns2Ob3s2);
+    // And(a=Ns1, b=a3Ns2Ob3s2, out=left03);
+
+    // And(a=c[3], b=Ns2, out=c3Ns2);
+    // And(a=d[3], b=sel[1], out=d3s2);
+    // Or(a=c3Ns2, b=d3s2, out=c3Ns2Od3s2);
+    // And(a=sel[0], b=c3Ns2Od3s2, out=right03);
+
+    // Or(a=left03, b=right03, out=out[3]);
+
+    // // bit 4
+    // And(a=a[4], b=Ns2, out=a4Ns2);
+    // And(a=b[4], b=sel[1], out=b4s2);
+    // Or(a=a4Ns2, b=b4s2, out=a4Ns2Ob4s2);
+    // And(a=Ns1, b=a4Ns2Ob4s2, out=left04);
+
+    // And(a=c[4], b=Ns2, out=c4Ns2);
+    // And(a=d[4], b=sel[1], out=d4s2);
+    // Or(a=c4Ns2, b=d4s2, out=c4Ns2Od4s2);
+    // And(a=sel[0], b=c4Ns2Od4s2, out=right04);
+
+    // Or(a=left04, b=right04, out=out[4]);
+
+    // // bit 5
+    // And(a=a[5], b=Ns2, out=a5Ns2);
+    // And(a=b[5], b=sel[1], out=b5s2);
+    // Or(a=a5Ns2, b=b5s2, out=a5Ns2Ob5s2);
+    // And(a=Ns1, b=a5Ns2Ob5s2, out=left05);
+
+    // And(a=c[5], b=Ns2, out=c5Ns2);
+    // And(a=d[5], b=sel[1], out=d5s2);
+    // Or(a=c5Ns2, b=d5s2, out=c5Ns2Od5s2);
+    // And(a=sel[0], b=c5Ns2Od5s2, out=right05);
+
+    // Or(a=left05, b=right05, out=out[5]);
+
+    // // bit 6
+    // And(a=a[6], b=Ns2, out=a6Ns2);
+    // And(a=b[6], b=sel[1], out=b6s2);
+    // Or(a=a6Ns2, b=b6s2, out=a6Ns2Ob6s2);
+    // And(a=Ns1, b=a6Ns2Ob6s2, out=left06);
+
+    // And(a=c[6], b=Ns2, out=c6Ns2);
+    // And(a=d[6], b=sel[1], out=d6s2);
+    // Or(a=c6Ns2, b=d6s2, out=c6Ns2Od6s2);
+    // And(a=sel[0], b=c6Ns2Od6s2, out=right06);
+
+    // Or(a=left06, b=right06, out=out[6]);
+
+    // // bit 7
+    // And(a=a[7], b=Ns2, out=a7Ns2);
+    // And(a=b[7], b=sel[1], out=b7s2);
+    // Or(a=a7Ns2, b=b7s2, out=a7Ns2Ob7s2);
+    // And(a=Ns1, b=a7Ns2Ob7s2, out=left07);
+
+    // And(a=c[7], b=Ns2, out=c7Ns2);
+    // And(a=d[7], b=sel[1], out=d7s2);
+    // Or(a=c7Ns2, b=d7s2, out=c7Ns2Od7s2);
+    // And(a=sel[0], b=c7Ns2Od7s2, out=right07);
+
+    // Or(a=left07, b=right07, out=out[7]);
+
+    // // bit 8
+    // And(a=a[8], b=Ns2, out=a8Ns2);
+    // And(a=b[8], b=sel[1], out=b8s2);
+    // Or(a=a8Ns2, b=b8s2, out=a8Ns2Ob8s2);
+    // And(a=Ns1, b=a8Ns2Ob8s2, out=left08);
+
+    // And(a=c[8], b=Ns2, out=c8Ns2);
+    // And(a=d[8], b=sel[1], out=d8s2);
+    // Or(a=c8Ns2, b=d8s2, out=c8Ns2Od8s2);
+    // And(a=sel[0], b=c8Ns2Od8s2, out=right08);
+
+    // Or(a=left08, b=right08, out=out[8]);
+
+    // // bit 9
+    // And(a=a[9], b=Ns2, out=a9Ns2);
+    // And(a=b[9], b=sel[1], out=b9s2);
+    // Or(a=a9Ns2, b=b9s2, out=a9Ns2Ob9s2);
+    // And(a=Ns1, b=a9Ns2Ob9s2, out=left09);
+
+    // And(a=c[9], b=Ns2, out=c9Ns2);
+    // And(a=d[9], b=sel[1], out=d9s2);
+    // Or(a=c9Ns2, b=d9s2, out=c9Ns2Od9s2);
+    // And(a=sel[0], b=c9Ns2Od9s2, out=right09);
+
+    // Or(a=left09, b=right09, out=out[9]);
+
+    // // bit 10
+    // And(a=a[10], b=Ns2, out=a10Ns2);
+    // And(a=b[10], b=sel[1], out=b10s2);
+    // Or(a=a10Ns2, b=b10s2, out=a10Ns2Ob10s2);
+    // And(a=Ns1, b=a10Ns2Ob10s2, out=left10);
+
+    // And(a=c[10], b=Ns2, out=c10Ns2);
+    // And(a=d[10], b=sel[1], out=d10s2);
+    // Or(a=c10Ns2, b=d10s2, out=c10Ns2Od10s2);
+    // And(a=sel[0], b=c10Ns2Od10s2, out=right10);
+
+    // Or(a=left10, b=right10, out=out[10]);
+
+    // // bit 11
+    // And(a=a[11], b=Ns2, out=a11Ns2);
+    // And(a=b[11], b=sel[1], out=b11s2);
+    // Or(a=a11Ns2, b=b11s2, out=a11Ns2Ob11s2);
+    // And(a=Ns1, b=a11Ns2Ob11s2, out=left11);
+
+    // And(a=c[11], b=Ns2, out=c11Ns2);
+    // And(a=d[11], b=sel[1], out=d11s2);
+    // Or(a=c11Ns2, b=d11s2, out=c11Ns2Od11s2);
+    // And(a=sel[0], b=c11Ns2Od11s2, out=right11);
+
+    // Or(a=left11, b=right11, out=out[11]);
+
+    // // bit 12
+    // And(a=a[12], b=Ns2, out=a12Ns2);
+    // And(a=b[12], b=sel[1], out=b12s2);
+    // Or(a=a12Ns2, b=b12s2, out=a12Ns2Ob12s2);
+    // And(a=Ns1, b=a12Ns2Ob12s2, out=left12);
+
+    // And(a=c[12], b=Ns2, out=c12Ns2);
+    // And(a=d[12], b=sel[1], out=d12s2);
+    // Or(a=c12Ns2, b=d12s2, out=c12Ns2Od12s2);
+    // And(a=sel[0], b=c12Ns2Od12s2, out=right12);
+
+    // Or(a=left12, b=right12, out=out[12]);
+
+    // // bit 13
+    // And(a=a[13], b=Ns2, out=a13Ns2);
+    // And(a=b[13], b=sel[1], out=b13s2);
+    // Or(a=a13Ns2, b=b13s2, out=a13Ns2Ob13s2);
+    // And(a=Ns1, b=a13Ns2Ob13s2, out=left13);
+
+    // And(a=c[13], b=Ns2, out=c13Ns2);
+    // And(a=d[13], b=sel[1], out=d13s2);
+    // Or(a=c13Ns2, b=d13s2, out=c13Ns2Od13s2);
+    // And(a=sel[0], b=c13Ns2Od13s2, out=right13);
+
+    // Or(a=left13, b=right13, out=out[13]);
+
+    // // bit 14
+    // And(a=a[14], b=Ns2, out=a14Ns2);
+    // And(a=b[14], b=sel[1], out=b14s2);
+    // Or(a=a14Ns2, b=b14s2, out=a14Ns2Ob14s2);
+    // And(a=Ns1, b=a14Ns2Ob14s2, out=left14);
+
+    // And(a=c[14], b=Ns2, out=c14Ns2);
+    // And(a=d[14], b=sel[1], out=d14s2);
+    // Or(a=c14Ns2, b=d14s2, out=c14Ns2Od14s2);
+    // And(a=sel[0], b=c14Ns2Od14s2, out=right14);
+
+    // Or(a=left14, b=right14, out=out[14]);
+
+    // // bit 15
+    // And(a=a[15], b=Ns2, out=a15Ns2);
+    // And(a=b[15], b=sel[1], out=b15s2);
+    // Or(a=a15Ns2, b=b15s2, out=a15Ns2Ob15s2);
+    // And(a=Ns1, b=a15Ns2Ob15s2, out=left15);
+
+    // And(a=c[15], b=Ns2, out=c15Ns2);
+    // And(a=d[15], b=sel[1], out=d15s2);
+    // Or(a=c15Ns2, b=d15s2, out=c15Ns2Od15s2);
+    // And(a=sel[0], b=c15Ns2Od15s2, out=right15);
+
+    // Or(a=left15, b=right15, out=out[15]);
+
+    // Second try
+
+    Not(in=sel[1], out=notLeftSel);
+    Not(in=sel[0], out=notRightSel);
+
+    And(a=notLeftSel, b=notRightSel, out=sel00);
+    And(a=notLeftSel, b=sel[0], out=sel01);
+    And(a=sel[1], b=notRightSel, out=sel10);
+    And(a=sel[1], b=sel[0], out=sel11);
+
+
+    // bit 1
+
+    And(a=a[0], b=sel00, out=a0AndSel00);
+    And(a=b[0], b=sel01, out=b0AndSel01);
+    And(a=c[0], b=sel10, out=c0AndSel10);
+    And(a=d[0], b=sel11, out=d0AndSel11);
+
+    Or(a=a0AndSel00, b=b0AndSel01, out=ab0);
+    Or(a=c0AndSel10, b=d0AndSel11, out=cd0);
+
+    Or(a=ab0, b=cd0, out=out[0]);
+
+    // bit 2
+
+    And(a=a[1], b=sel00, out=a1AndSel00);
+    And(a=b[1], b=sel01, out=b1AndSel01);
+    And(a=c[1], b=sel10, out=c1AndSel10);
+    And(a=d[1], b=sel11, out=d1AndSel11);
+
+    Or(a=a1AndSel00, b=b1AndSel01, out=ab1);
+    Or(a=c1AndSel10, b=d1AndSel11, out=cd1);
+
+    Or(a=ab1, b=cd1, out=out[1]);
+
+    // bit 3
+
+    And(a=a[2], b=sel00, out=a2AndSel00);
+    And(a=b[2], b=sel01, out=b2AndSel01);
+    And(a=c[2], b=sel10, out=c2AndSel10);
+    And(a=d[2], b=sel11, out=d2AndSel11);
+
+    Or(a=a2AndSel00, b=b2AndSel01, out=ab2);
+    Or(a=c2AndSel10, b=d2AndSel11, out=cd2);
+
+    Or(a=ab2, b=cd2, out=out[2]);
+
+    // bit 4
+
+    And(a=a[3], b=sel00, out=a3AndSel00);
+    And(a=b[3], b=sel01, out=b3AndSel01);
+    And(a=c[3], b=sel10, out=c3AndSel10);
+    And(a=d[3], b=sel11, out=d3AndSel11);
+
+    Or(a=a3AndSel00, b=b3AndSel01, out=ab3);
+    Or(a=c3AndSel10, b=d3AndSel11, out=cd3);
+
+    Or(a=ab3, b=cd3, out=out[3]);
+
+    // bit 5
+
+    And(a=a[4], b=sel00, out=a4AndSel00);
+    And(a=b[4], b=sel01, out=b4AndSel01);
+    And(a=c[4], b=sel10, out=c4AndSel10);
+    And(a=d[4], b=sel11, out=d4AndSel11);
+
+    Or(a=a4AndSel00, b=b4AndSel01, out=ab4);
+    Or(a=c4AndSel10, b=d4AndSel11, out=cd4);
+
+    Or(a=ab4, b=cd4, out=out[4]);
+
+    // bit 6
+
+    And(a=a[5], b=sel00, out=a5AndSel00);
+    And(a=b[5], b=sel01, out=b5AndSel01);
+    And(a=c[5], b=sel10, out=c5AndSel10);
+    And(a=d[5], b=sel11, out=d5AndSel11);
+
+    Or(a=a5AndSel00, b=b5AndSel01, out=ab5);
+    Or(a=c5AndSel10, b=d5AndSel11, out=cd5);
+
+    Or(a=ab5, b=cd5, out=out[5]);
+
+    // bit 7
+
+    And(a=a[6], b=sel00, out=a6AndSel00);
+    And(a=b[6], b=sel01, out=b6AndSel01);
+    And(a=c[6], b=sel10, out=c6AndSel10);
+    And(a=d[6], b=sel11, out=d6AndSel11);
+
+    Or(a=a6AndSel00, b=b6AndSel01, out=ab6);
+    Or(a=c6AndSel10, b=d6AndSel11, out=cd6);
+
+    Or(a=ab6, b=cd6, out=out[6]);
+
+    // bit 8
+
+    And(a=a[7], b=sel00, out=a7AndSel00);
+    And(a=b[7], b=sel01, out=b7AndSel01);
+    And(a=c[7], b=sel10, out=c7AndSel10);
+    And(a=d[7], b=sel11, out=d7AndSel11);
+
+    Or(a=a7AndSel00, b=b7AndSel01, out=ab7);
+    Or(a=c7AndSel10, b=d7AndSel11, out=cd7);
+
+    Or(a=ab7, b=cd7, out=out[7]);
+
+    // bit 9
+
+    And(a=a[8], b=sel00, out=a8AndSel00);
+    And(a=b[8], b=sel01, out=b8AndSel01);
+    And(a=c[8], b=sel10, out=c8AndSel10);
+    And(a=d[8], b=sel11, out=d8AndSel11);
+
+    Or(a=a8AndSel00, b=b8AndSel01, out=ab8);
+    Or(a=c8AndSel10, b=d8AndSel11, out=cd8);
+
+    Or(a=ab8, b=cd8, out=out[8]);
+
+    // bit 10
+
+    And(a=a[9], b=sel00, out=a9AndSel00);
+    And(a=b[9], b=sel01, out=b9AndSel01);
+    And(a=c[9], b=sel10, out=c9AndSel10);
+    And(a=d[9], b=sel11, out=d9AndSel11);
+
+    Or(a=a9AndSel00, b=b9AndSel01, out=ab9);
+    Or(a=c9AndSel10, b=d9AndSel11, out=cd9);
+
+    Or(a=ab9, b=cd9, out=out[9]);
+
+    // bit 11
+
+    And(a=a[10], b=sel00, out=a10AndSel00);
+    And(a=b[10], b=sel01, out=b10AndSel01);
+    And(a=c[10], b=sel10, out=c10AndSel10);
+    And(a=d[10], b=sel11, out=d10AndSel11);
+
+    Or(a=a10AndSel00, b=b10AndSel01, out=ab10);
+    Or(a=c10AndSel10, b=d10AndSel11, out=cd10);
+
+    Or(a=ab10, b=cd10, out=out[10]);
+
+    // bit 12
+
+    And(a=a[11], b=sel00, out=a11AndSel00);
+    And(a=b[11], b=sel01, out=b11AndSel01);
+    And(a=c[11], b=sel10, out=c11AndSel10);
+    And(a=d[11], b=sel11, out=d11AndSel11);
+
+    Or(a=a11AndSel00, b=b11AndSel01, out=ab11);
+    Or(a=c11AndSel10, b=d11AndSel11, out=cd11);
+
+    Or(a=ab11, b=cd11, out=out[11]);
+
+    // bit 13
+
+    And(a=a[12], b=sel00, out=a12AndSel00);
+    And(a=b[12], b=sel01, out=b12AndSel01);
+    And(a=c[12], b=sel10, out=c12AndSel10);
+    And(a=d[12], b=sel11, out=d12AndSel11);
+
+    Or(a=a12AndSel00, b=b12AndSel01, out=ab12);
+    Or(a=c12AndSel10, b=d12AndSel11, out=cd12);
+
+    Or(a=ab12, b=cd12, out=out[12]);
+
+    // bit 14
+
+    And(a=a[13], b=sel00, out=a13AndSel00);
+    And(a=b[13], b=sel01, out=b13AndSel01);
+    And(a=c[13], b=sel10, out=c13AndSel10);
+    And(a=d[13], b=sel11, out=d13AndSel11);
+
+    Or(a=a13AndSel00, b=b13AndSel01, out=ab13);
+    Or(a=c13AndSel10, b=d13AndSel11, out=cd13);
+
+    Or(a=ab13, b=cd13, out=out[13]);
+
+    // bit 15
+
+    And(a=a[14], b=sel00, out=a14AndSel00);
+    And(a=b[14], b=sel01, out=b14AndSel01);
+    And(a=c[14], b=sel10, out=c14AndSel10);
+    And(a=d[14], b=sel11, out=d14AndSel11);
+
+    Or(a=a14AndSel00, b=b14AndSel01, out=ab14);
+    Or(a=c14AndSel10, b=d14AndSel11, out=cd14);
+
+    Or(a=ab14, b=cd14, out=out[14]);
+
+    // bit 16
+
+    And(a=a[15], b=sel00, out=a15AndSel00);
+    And(a=b[15], b=sel01, out=b15AndSel01);
+    And(a=c[15], b=sel10, out=c15AndSel10);
+    And(a=d[15], b=sel11, out=d15AndSel11);
+
+    Or(a=a15AndSel00, b=b15AndSel01, out=ab15);
+    Or(a=c15AndSel10, b=d15AndSel11, out=cd15);
+
+    Or(a=ab15, b=cd15, out=out[15]);
+}
