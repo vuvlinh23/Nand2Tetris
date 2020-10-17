@@ -17,6 +17,7 @@ CHIP DMux4Way {
 
     PARTS:
     // Put your code here:
+    // Base on truth table
     // Not(in=sel[0], out=not0);
     // Not(in=sel[1], out=not1);
 
@@ -30,7 +31,7 @@ CHIP DMux4Way {
     // And(a=in, b=sel10, out=c);
     // And(a=in, b=sel11, out=d);
 
-    DMux(in=in, sel=sel[0], a=ac, b=bd);
+    DMux(in=in, sel=sel[0], a=ac, b=bd); // If sel[0] == 0 => ac = in, bd = 0 and otherwise 
     DMux(in=ac, sel=sel[1], a=a, b=c);
     DMux(in=bd, sel=sel[1], a=b, b=d);
 }
