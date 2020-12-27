@@ -43,4 +43,45 @@ CHIP ALU {
 
     PARTS:
    // Put you code here:
+   
+   // ---Step 1: Zero the input---
+   // zero the x input
+   Mux16(a=x, b=false, sel=zx, out=afterZx);
+   // zero the y input
+   Mux16(a=y, b=false, sel=zy, out=afterZy);
+
+
+   // ---Step 2: Negate the output from first step---
+   // we have to negate the output after the zero the input
+   // to prepare for next step
+   Not16(in=afterZx, out=notAfterZx);
+   Not16(in=afterZy, out=notAfterZy);
+
+   // negate the x input
+   Mux16(a=afterZx, b=notAfterZx, sel=nx, out=afterNx);
+   // negate the y input
+   Mux16(a=afterZy, b=notAfterZy, sel=ny, out=afterNy);
+
+
+   //---Step 3: Compute x + y or x and y---
+   // calculate x + y
+   Add16(a=afterNx, b=afterNy, out=afterNxAddAfterNy);
+   // calculate x and y
+   And16(a=afterNx, b=afterNy, out=afterNxAndAfterNy);
+
+   Mux16(a=afterNxAndAfterNy, b=afterNxAddAfterNy, sel=f, out=afterF);
+
+
+   //---Step 4: Negate the output from 3rd step?---
+   // we have to negate the output from 3rd step
+   // to prepare for next step
+   Not16(in=afterF, out=notAfterF);
+
+   Mux16(a=afterF, b=notAfterF, sel=no, out=out, out=finalOutput, out[15]=signedBit);
+
+   //zr flag
+   Nor16Way(in=finalOutput, out=zr);
+
+   //ng flag
+   Mux(a=false, b=true, sel=signedBit, out=ng);
 }
