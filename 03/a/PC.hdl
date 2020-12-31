@@ -17,4 +17,19 @@ CHIP PC {
 
     PARTS:
     // Put your code here:
+
+    // Plus one from last output
+    Inc16(in=outReg, out=outPlus1);
+
+    // If reset or load or inc == 1 then load = 1
+    Or(a=reset, b=load, out=resetOrLoad);
+    Or(a=resetOrLoad, b=inc, out=resetOrLoadorInc);
+
+    // We can look at Mux8Way16Bit's truth table and
+    // treat 3 bit reset, load, inc as 3bit selector
+    // the priority: reset > load > inc
+    Mux8Way16(a=outReg, b=false, c=in, d=false, e=outPlus1, f=false, g=in, h=false, sel[0]=reset, sel[1]=load, sel[2]=inc, out=inOfReg);
+
+    Register(in=inOfReg, load=resetOrLoadorInc, out=out, out=outReg);
+    
 }
